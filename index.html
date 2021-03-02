@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .parent {
+        display: flex;
+
+    }
+
+    .inner {
+        width: 20px;
+        text-align: center;
+    }
+
+    .result{
+        border: 1px dashed black;
+        background-color: rgb(253, 253, 181);
+        padding: 20px;
+    }
+</style>
+
+<body>
+    <div class="parent">
+        <input class="inner" placeholder="a" type="text" id="a">
+        <span class="inner">x<sup>2</sup></span>
+        <span class="inner">+</span>
+        <input class="inner" placeholder="b" type="text" id="b">
+        <span class="inner">x</span>
+        <span class="inner">+</span>
+        <input class="inner" placeholder="c" type="text" id="c">
+        <span class="inner">=</span>
+        <span class="inner">0</span>
+
+   
+    </div>
+    <br>
+    <input id="solve" type="submit" value="solve">
+    <br>
+    <br>
+    <div class="result">
+        <h2>result:</h2>
+        <p class="resultValue"></p>
+    </div>
+
+
+    <script>
+        document.querySelector("#solve").addEventListener("click", function () { 
+            let a = parseInt(document.querySelector("#a").value);
+            let b = parseInt(document.querySelector("#b").value);
+            let c = parseInt(document.querySelector("#c").value);
+            let delta = null;
+            let x1 = x2 = null;
+
+            delta = ( Math.pow(b, 2) - (4 * a * c) );
+
+            if(delta > 0){
+                x1 = ((-1 * b) + Math.sqrt(delta)) / 2;
+                x2 = ((-1 * b) - Math.sqrt(delta)) / 2;
+                document.querySelector(".resultValue").innerHTML = "x1 = " + x1 + "<br>x2 = " + x2;
+            }else if(delta == 0){
+                x1 = x2 = ((-1 * b) + Math.sqrt(delta)) / 2;
+                document.querySelector(".resultValue").innerHTML = "x1 = " + x1;
+            }else{
+                document.querySelector(".resultValue").innerHTML = "there is no answer.";
+            }
+         });
+    </script>
+</body>
+
+</html>
